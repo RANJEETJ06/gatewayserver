@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: gatewayserver
+  config:
+    import: "configserver:http://configserver-ms:8071/"
+  rabbitmq:
+    host: rabbit
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: "gatewayserver"
+    description: "Microservices gateway"
+    version: "1.0.0"
+
+#optional
+logging:
+  level:
+    com:
+      learn:
+        gatewayserver: DEBUG
