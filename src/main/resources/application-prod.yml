@@ -14,6 +14,15 @@ spring:
         locator:
           enabled: false
           lower-case-service-id: true
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 3s
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
 
 management:
   endpoints:
@@ -38,3 +47,12 @@ logging:
     com:
       learn:
         gatewayserver: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      sliding-window-size: 10
+      permitted-number-of-calls-in-half-open-state: 2
+      failure-rate-threshold: 50
+      wait-duration-in-open-state:
+        seconds: 5
