@@ -47,15 +47,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
-        </dependency>
 
 
         <dependency>
@@ -73,10 +70,6 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -99,7 +92,7 @@
                 <version>3.4.5</version>
                 <configuration>
                     <to>
-                        <image>ranjeetjena06/${project.artifactId}:v2</image>
+                        <image>ranjeetjena06/${project.artifactId}:v2.1</image>
                     </to>
                 </configuration>
             </plugin>

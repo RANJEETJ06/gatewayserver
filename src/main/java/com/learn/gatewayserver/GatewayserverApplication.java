@@ -50,7 +50,7 @@ public class GatewayserverApplication {
                                                 .addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
 //                                                .circuitBreaker(config -> config.setName("cardsCircuitBreaker")
 //                                                        .setFallbackUri("forward:/contactSupport"))
-                                                .requestRateLimiter(config -> config.setRateLimiter(redisRateLimiter()).setKeyResolver(userKeyResolver()))
+//                                                .requestRateLimiter(config -> config.setRateLimiter(redisRateLimiter()).setKeyResolver(userKeyResolver()))
                                 )
                                 .uri("lb://CARDS")
                 )
@@ -69,21 +69,21 @@ public class GatewayserverApplication {
 
     }
 
-    @Bean
-    public Customizer<ReactiveResilience4JCircuitBreakerFactory> defaultCustomizer() {
-        return factory -> factory.configureDefault(id -> new Resilience4JConfigBuilder(id)
-                .circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
-                .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(4)).build()).build());
-    }
-
-    @Bean
-    public RedisRateLimiter redisRateLimiter() {
-        return new RedisRateLimiter(1, 1, 1);
-    }
-
-    @Bean
-    KeyResolver userKeyResolver() {
-        return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
-                .defaultIfEmpty("anonymous");
-    }
+//    @Bean
+//    public Customizer<ReactiveResilience4JCircuitBreakerFactory> defaultCustomizer() {
+//        return factory -> factory.configureDefault(id -> new Resilience4JConfigBuilder(id)
+//                .circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
+//                .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(4)).build()).build());
+//    }
+//
+//    @Bean
+//    public RedisRateLimiter redisRateLimiter() {
+//        return new RedisRateLimiter(1, 1, 1);
+//    }
+//
+//    @Bean
+//    KeyResolver userKeyResolver() {
+//        return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
+//                .defaultIfEmpty("anonymous");
+//    }
 }
