@@ -78,6 +78,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -99,7 +112,7 @@
                 <version>3.4.5</version>
                 <configuration>
                     <to>
-                        <image>ranjeetjena06/${project.artifactId}:v2</image>
+                        <image>ranjeetjena06/${project.artifactId}:v3</image>
                     </to>
                 </configuration>
             </plugin>
